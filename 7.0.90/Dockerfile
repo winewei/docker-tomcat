@@ -1,6 +1,6 @@
 FROM inutano/wget:latest AS downloader
 
-RUN wget -q https://raw.githubusercontent.com/winewei/tools/master/apache-tomcat-7.0.90.tar.gz --no-check-certificate
+RUN wget -q https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.90/bin/apache-tomcat-7.0.90.tar.gz --no-check-certificate
 RUN tar xf apache-tomcat-7.0.90.tar.gz
 
 #final build
@@ -10,7 +10,7 @@ COPY --from=downloader /apache-tomcat-7.0.90 /usr/local/apache-tomcat-7.0.90
 
 ENV CATALINA_HOME /usr/local/apache-tomcat-7.0.90/
 ENV PATH $CATALINA_HOME/bin:$PATH
-RUN mkdir -p "${CATALINA_HOME}/webapps"
+RUN rm -rf ${CATALINA_HOME}/webapps/*
 WORKDIR ${CATALINA_HOME}/webapps
 
 # let "Tomcat Native" live somewhere isolated
