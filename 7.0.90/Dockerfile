@@ -8,10 +8,10 @@ FROM pristtlt/java:1.8
 
 COPY --from=downloader /apache-tomcat-7.0.90 /usr/local/apache-tomcat-7.0.90
 
-ENV CATALINA_HOME /usr/local/apache-tomcat-7.0.90/webapps
+ENV CATALINA_HOME /usr/local/apache-tomcat-7.0.90/
 ENV PATH $CATALINA_HOME/bin:$PATH
-RUN mkdir -p "$CATALINA_HOME"
-WORKDIR $CATALINA_HOME
+RUN mkdir -p "${CATALINA_HOME}/webapps"
+WORKDIR ${CATALINA_HOME}/webapps
 
 # let "Tomcat Native" live somewhere isolated
 ENV TOMCAT_NATIVE_LIBDIR $CATALINA_HOME/native-jni-lib
