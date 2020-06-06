@@ -3,6 +3,7 @@ services: docker
 
 env:
   - VERSION=7.0.90
+  - VERSION=8.5.55
 
 install:
   - echo "skip"
