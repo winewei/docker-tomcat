@@ -1,6 +1,6 @@
 FROM inutano/wget:latest AS downloader
 
-RUN wget -q https://mirrors.bfsu.edu.cn/apache/tomcat/tomcat-8/v8.5.55/bin/apache-tomcat-8.5.55.tar.gz
+RUN wget -q https://mirrors.bfsu.edu.cn/apache/tomcat/tomcat-8/v8.5.55/bin/apache-tomcat-8.5.55.tar.gz --no-check-certificate
 RUN tar xf apache-tomcat-8.5.55.tar.gz
 
 #final build
